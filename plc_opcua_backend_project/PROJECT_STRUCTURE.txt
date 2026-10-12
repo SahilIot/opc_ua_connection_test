@@ -1,0 +1,17 @@
+plc_opcua_backend_project/
+  .env.example          Copy to .env and fill in your own credentials
+  .gitignore
+  requirements.txt
+  README.md
+  app/
+    __init__.py
+    config.py
+    database.py
+    models.py
+    plc_client.py
+    collector.py
+    main.py
+  dashboard/
+    index.html           Basic same-origin monitoring dashboard
+  certificates/
+    .gitkeep             Put approved certificate/key files here
