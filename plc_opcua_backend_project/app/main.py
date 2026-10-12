@@ -1,4 +1,3 @@
-
 import logging
 import os
 from contextlib import asynccontextmanager
@@ -19,13 +18,11 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("Application started without PostgreSQL.")
     yield
     logger.info("Application shutting down.")
-
 
 app = FastAPI(
     title="PLC Monitoring Backend - OPC UA Test Mode",
@@ -33,7 +30,6 @@ app = FastAPI(
     description="Temporary PostgreSQL-free application for testing OPC UA connectivity.",
     lifespan=lifespan,
 )
-
 
 @app.get("/")
 async def home():
@@ -50,7 +46,6 @@ async def home():
         "docs": "/docs",
     }
 
-
 @app.get("/plc/test")
 async def plc_test():
     try:
@@ -61,7 +56,6 @@ async def plc_test():
             status_code=502,
             detail=f"OPC UA test failed: {type(exc).__name__}: {exc}",
         ) from exc
-
 
 dashboard_dir = BASE_DIR / "dashboard"
 if dashboard_dir.is_dir():
